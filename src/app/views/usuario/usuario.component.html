@@ -1,0 +1,27 @@
+<mat-card>
+    <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <h2>Cadastro de Usuário</h2>
+            <mat-form-field class="full-width-input">
+                <input matInput placeholder="Nome" formControlName="nome" required>
+                <mat-error>
+                    Por favor digite um nome
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width-input">
+                <input matInput placeholder="Nickname" formControlName="username" required>
+                <mat-error>
+                    Por favor digite um nickname valido
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width-input">
+                <input matInput type="password" placeholder="Senha" formControlName="password" required>
+                <mat-error>
+                    Por favor digite a senha
+                </mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="primary">Salvar</button>
+
+        </form>
+    </mat-card-content>
+</mat-card>

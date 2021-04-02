@@ -2,6 +2,20 @@
     <mat-toolbar-row>
         <span>Blog Framework <mat-icon>home</mat-icon></span>
         <span class="example-spacer"></span>
+        <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+            <button mat-button routerLink="/login" *ngIf="!isAuthenticated">
+              <mat-icon>power_settings_new</mat-icon>
+              Login
+            </button>
+            <button mat-button *ngIf="isAuthenticated" (click)="logout()">
+              <mat-icon>exit_to_app</mat-icon>
+              Logout
+            </button>
+        </div>
+        <button mat-button fxHide="false" fxHide.gt-sm>
+            <mat-icon>menu</mat-icon>
+        </button>
+
     </mat-toolbar-row>
 
 </mat-toolbar>
