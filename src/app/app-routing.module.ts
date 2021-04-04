@@ -1,10 +1,10 @@
+import { PostComponent } from './post/post.component';
+import { AuthGuard } from './core/auth/auth.guard';
+import { UsuarioComponent } from './usuario/usuario.component';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {HomeComponent} from './views/home/home.component';
-import {LoginComponent} from './login/login.component';
-import {PostComponent} from './views/post/post.component';
-import { AuthGuardService } from './auth-guard.service';
-import {UsuarioComponent} from './views/usuario/usuario.component';
 
 const routes: Routes = [
   {
@@ -23,9 +23,8 @@ const routes: Routes = [
   {
     path: 'post',
     component: PostComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [ AuthGuard ]
   },
-
 ];
 
 @NgModule({

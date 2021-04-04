@@ -1,10 +1,10 @@
+import { CoreModule } from './core/core.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './views/home/home.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
@@ -18,9 +18,11 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { PostComponent } from './views/post/post.component';
-import { UsuarioComponent } from './views/usuario/usuario.component';
+import { UsuarioComponent } from './usuario/usuario.component';
+import { PostComponent } from './post/post.component';
 
 
 @NgModule({
@@ -28,8 +30,8 @@ import { UsuarioComponent } from './views/usuario/usuario.component';
     AppComponent,
     HomeComponent,
     LoginComponent,
-    PostComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,9 @@ import { UsuarioComponent } from './views/usuario/usuario.component';
     MatOptionModule,
     MatProgressSpinnerModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

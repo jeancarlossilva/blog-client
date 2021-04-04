@@ -1,7 +1,7 @@
+import { AuthService } from './../core/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -29,25 +29,23 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  async ngOnInit(): Promise<void> {
-    if (await this.authService.checkAuthenticated()) {
-      await this.router.navigate([this.returnUrl]);
-    }
+  ngOnInit() {
   }
 
-  async onSubmit(): Promise<void> {
-    this.loginInvalid = false;
-    this.formSubmitAttempt = false;
-    if (this.form.valid) {
-      try {
-        const username = this.form.get('username').value;
-        const password = this.form.get('password').value;
-        await this.authService.login(username, password);
-      } catch (err) {
-        this.loginInvalid = true;
-      }
-    } else {
-      this.formSubmitAttempt = true;
-    }
+  login() {
+     const username = this.form.get('username').value;
+     const password = this.form.get('password').value;
+
+     this.authService
+        .authenticate(username, password)
+        .subscribe (
+          result => {
+            this.router.navigate(['/post', username]);
+          }, erro => {
+            console.log(erro);
+            alert('Usuario ou senha invalido!');
+          }
+        );
   }
+
 }
